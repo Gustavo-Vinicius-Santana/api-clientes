@@ -29,3 +29,40 @@ def listar_clientes():
             "telefone": c.telefone
         })
     return jsonify(resultado)
+
+@clientes_bp.route("/<int:id>", methods=["GET"])
+def buscar_cliente(id):
+    cliente = ClienteService.buscar_cliente(id)
+    if not cliente:
+        return jsonify({"erro": "cliente nao encontrado"}), 404
+    return jsonify({
+        "id": cliente.id,
+        "nome": cliente.nome,
+        "email": cliente.email,
+        "telefone": cliente.telefone
+    }), 200
+
+@clientes_bp.route("/<int:id>", methods=["DELETE"])
+def excluir_cliente(id):
+    cliente = ClienteService.excluir_cliente(id)
+    if not cliente:
+        return jsonify({"erro": "cliente nao encontrado"}), 404
+    return jsonify({
+        "id": cliente.id,
+        "nome": cliente.nome,
+        "email": cliente.email,
+        "telefone": cliente.telefone
+    }), 200
+
+@clientes_bp.route("/<int:id>", methods=["PUT"])
+def atualizar_cliente(id):
+    data = request.json
+    cliente = ClienteService.atualizar_cliente(id, data)
+    if not cliente:
+        return jsonify({"erro": "cliente nao encontrado"}), 404
+    return jsonify({
+        "id": cliente.id,
+        "nome": cliente.nome,
+        "email": cliente.email,
+        "telefone": cliente.telefone
+    }), 200
