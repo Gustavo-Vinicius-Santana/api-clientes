@@ -1,8 +1,15 @@
 import os
 
 class Config:
+    # --- SQLite ---
     SQLALCHEMY_DATABASE_URI = os.getenv(
         "DATABASE_URL",
-        "sqlite:///db.sqlite"  # Arquivo SQLite chamado db.sqlite na raiz do projeto
+        "sqlite:///db.sqlite"
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    # --- MongoDB ---
+    MONGO_URI = os.getenv(
+        "MONGO_URI",
+        "mongodb://localhost:27017/db-api-clientes"
+    )
