@@ -1,6 +1,7 @@
 from flask import Flask
 from .routes.main_routes import main_bp
 from .routes.clientes_routes import clientes_bp
+from .routes.produtos_routes import produtos_bp
 from .extensions import db, migrate, mongo
 
 def create_app():
@@ -13,5 +14,6 @@ def create_app():
 
     app.register_blueprint(main_bp)
     app.register_blueprint(clientes_bp)
+    app.register_blueprint(produtos_bp)
 
     return app
