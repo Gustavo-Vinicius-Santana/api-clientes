@@ -8,7 +8,7 @@ def cadastrar_cliente():
     data = request.json
     if not data.get("nome") or not data.get("email"):
         return jsonify({"erro": "nome e email são obrigatórios"}), 400
-
+    
     cliente = ClienteService.cadastrar_cliente(data)
     return jsonify({
         "id": cliente.id,
@@ -27,7 +27,7 @@ def listar_clientes():
             "nome": c.nome,
             "email": c.email,
             "telefone": c.telefone
-        })
+        }), 200
     return jsonify(resultado)
 
 @clientes_bp.route("/<int:id>", methods=["GET"])
