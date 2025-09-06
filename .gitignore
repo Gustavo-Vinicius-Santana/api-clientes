@@ -15,6 +15,7 @@ instance/
 *.db
 *.sqlite
 *.sqlite3
+migrations/
 
 # IDEs / Editor
 .vscode/

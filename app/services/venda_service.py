@@ -4,7 +4,7 @@ from app.repositories.log_repository import LogRepository
 class VendaService:
     @staticmethod
     def cadastrar_venda(data):
-        LogRepository.create(user_id=1, acao="cadastrar_venda", detalhes=data)
+        LogRepository.create(user_id=1, acao="VENDA", detalhes=data)
         return VendaRepository.create(data)
     
     @staticmethod
